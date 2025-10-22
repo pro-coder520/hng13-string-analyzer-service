@@ -28,7 +28,7 @@ def get_sha256_hash(value):
     """Calculates the SHA-256 hash of a string."""
     return hashlib.sha256(value.encode('utf-8')).hexdigest()
 
-@csrf_exempt
+
 def strings_view(request):
     """
     Handles creating new strings (POST) and retrieving all strings with filtering (GET).
@@ -112,7 +112,7 @@ def strings_view(request):
     return JsonResponse({"error": "Method not allowed"}, status=405)
 
 
-@csrf_exempt
+
 def string_detail_view(request, string_value):
     """
     Handles retrieving a specific string (GET) and deleting it (DELETE).
