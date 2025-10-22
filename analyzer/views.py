@@ -42,7 +42,7 @@ def strings_view(request):
             return JsonResponse({"error": "Invalid JSON format"}, status=400)
 
         if 'value' not in data:
-            return JsonResponse({"error": "Missing 'value' field in request body"}, status=400)
+            return JsonResponse({"error": "Missing 'value' field in request body"}, status=404)
 
         value = data['value']
         if not isinstance(value, str):
