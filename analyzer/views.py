@@ -230,3 +230,12 @@ def filter_by_natural_language(request):
         "interpreted_query": interpreted_query
     }
     return JsonResponse(response, status=200)
+
+
+
+def home_view(request):
+    """A simple view for the root URL and health checks."""
+    return JsonResponse({
+        "status": "ok", 
+        "message": "String Analyzer API is running."
+    }, status=200)
