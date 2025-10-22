@@ -33,6 +33,14 @@ DEBUG = False
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 CORS_ALLOW_ALL_ORIGINS = False
 
+
+RAILWAY_DOMAIN = os.environ.get('RAILWAY_DOMAIN')
+
+if RAILWAY_DOMAIN:
+    ALLOWED_HOSTS.append(RAILWAY_DOMAIN)
+
+CSRF_TRUSTED_ORIGINS = [f'https://{RAILWAY_DOMAIN}'] if RAILWAY_DOMAIN else []
+
 # Application definition
 
 INSTALLED_APPS = [
