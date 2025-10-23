@@ -29,6 +29,7 @@ def get_sha256_hash(value):
     return hashlib.sha256(value.encode('utf-8')).hexdigest()
 
 
+@csrf_exempt
 def strings_view(request):
     """
     Handles creating new strings (POST) and retrieving all strings with filtering (GET).
@@ -37,7 +38,8 @@ def strings_view(request):
     # POST /strings
     if request.method == 'POST':
         try:
-            data = json.loads(request.body)
+            # request.body may be bytes; decode safe handling via json.loads()
+            data = json.loads(request.body or b'{}')
         except json.JSONDecodeError:
             return JsonResponse({"error": "Invalid JSON format"}, status=400)
 

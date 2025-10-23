@@ -22,5 +22,6 @@ from analyzer import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('strings/', include('analyzer.urls')),
+    path('strings', include('analyzer.urls')),
     path('', views.home_view, name='home')
 ]
